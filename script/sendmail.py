@@ -1,9 +1,10 @@
 #coding:utf-8
 def sendMsg(z,m):#传入主题和正文内容
 	import os
-	now_path = os.path.dirname(os.path.abspath(__file__))
-	real_path = os.path.realpath(now_path)#当前路径的绝对路径
-	conf = real_path + os.sep + 'setting.conf'
+	# now_path = os.path.dirname(os.path.abspath(__file__))
+	# real_path = os.path.realpath(now_path)#当前路径的绝对路径
+	# conf = real_path + os.sep + 'setting.conf'
+	conf = 'config' + os.sep + 'setting.conf'
 	import smtplib
 	from email.mime.text import MIMEText
 	import configparser
