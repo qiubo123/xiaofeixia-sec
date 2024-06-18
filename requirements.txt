@@ -1,0 +1,5 @@
+colorama==0.4.4
+pymemcache==4.0.0
+pymongo==4.6.1
+redis==5.0.1
+Requests==2.31.0
