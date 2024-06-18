@@ -39,10 +39,8 @@ def main():
 		p['bug_name'] = res['bugname']
 		_all_poc.append(p)
 
-	folders = ['config']
-	for f in folders:
-		if not os.path.exists(f):
-			os.makedirs(f)
+	if not os.path.exists('config'):
+		os.makedirs('config')
 	with open('./config/poc.json','w',encoding='utf-8') as f:
 		json.dump(_all_poc,f)
 	

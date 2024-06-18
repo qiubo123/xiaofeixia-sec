@@ -3,6 +3,8 @@
 def getfilename():#构造文件名,形如：20230823-log.txt
 	import datetime
 	import os
+	if not os.path.exists('log'):
+		os.makedirs(log)
 	today = datetime.datetime.today().strftime("%Y%m%d")
 	logfilename = today + '_log.txt'
 	return 'log'+os.sep+logfilename
