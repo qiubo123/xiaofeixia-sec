@@ -12,7 +12,7 @@
 ##
 ##
 安装python模块
-pip isntall -r requirements.txt
+pip inssstall -r requirements.txt
 或者指定源安装
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 用法示例
