@@ -8,11 +8,9 @@ import os
 import sys
 from colorama import Fore
 def get_poc_cmd():
-	# print(os.getcwd())
 	f = 'config'+os.sep+'poc.json'
-	# print(f)
 	if not os.path.exists(f):
-		print('未读取到poc配置文件，请先更新poc配置，执行： python luohualx-sec.py --updata-poc')
+		print('未读取到poc配置文件，请先更新poc配置，执行： python xiaofeixia-sec.py --updata-poc')
 		sys.exit()
 
 	with open(f,'r',encoding='utf-8') as f:
