@@ -53,7 +53,34 @@
 9、邮件发送过快可能会被qq限制，导致收不到邮件;</br>
 
 <h2>poc编写规范</h2>
+<h2>poc编写规范</h2>
 
+例：
+
+```
+def msg():
+  ret = {
+
+     'links'     :  '',
+
+      'huixian'   :  '',
+
+      'method'    :   'get',
+
+      'bugname'   :   'HIKVISION 流媒体管理服务器 user.xml 账号密码泄漏',
+
+      'level'     :   'critical',
+
+      'FOFA'      :   '"杭州海康威视系统技术有限公司 版权所有" && title="流媒体管理服务器"',
+
+      'author'    :   'ppxfx',
+
+      'ifbug'     :   False,
+
+      'create_time':  '2024/2/26',
+  	}
+ 	return ret
+```
 一般在弱口令poc中要获取location,
 if res.status_code == 302 and '/out/out.ViewFolder.php' in res.headers['location']
 需要指定allow_redirects=False，如下
