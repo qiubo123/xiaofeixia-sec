@@ -9,11 +9,13 @@
 <li>由于个人精力有限，现有poc未一一验证，存在误报或poc错误的情况；</li>
 </ol>
 <h2>用法</h2>
-<p>安装python模块</p>
-```
-pip install -r requirements.txt
-或者指定源安装
-pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+一、安装python模块
+`pip install -r requirements.txt`</br>
+
+或者指定源安装</br>
+
+`pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple`</br>
 用法示例
 1、对一个网站执行所有poc
 python xiaofeixia-sec.py -u http://www.tesssst.com -a
@@ -21,8 +23,6 @@ python xiaofeixia-sec.py -u http://www.tesssst.com -a
 python xiaofeixia-sec.py -u http://www.tesssst.com -s 弱口令
 3、批量poc扫描(不支持同时匹配,目前只能匹配一个关键字，如：-s tomcat nginx是不支持的)
 python xiaofeixia-sec.py -f targets.txt -s tomcat
-
-```
 4、扫描到的漏洞会记录到log目录下的文件，按照日期命名;
 5、“-pl”列出当前所有的poc信息;
 6、“debug”只能输出部分语法错误，这部分以后改进;
@@ -30,7 +30,8 @@ python xiaofeixia-sec.py -f targets.txt -s tomcat
 8、需要配置邮箱和授权码，最好是qq邮箱，其他的没配置，发现漏洞后可以直接邮件通知，不需要一直盯着;
 9、邮件发送过快可能会被qq限制，导致收不到邮件;
 ##
-
+```
+```
 poc编写规范
 一般在弱口令poc中要获取location,
 if res.status_code == 302 and '/out/out.ViewFolder.php' in res.headers['location']
