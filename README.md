@@ -82,6 +82,30 @@ def msg():
   return ret
 ```
 
+<h3>2、run()函数</h3>
+<p>`run()`函数为检测漏洞的入口，在该函数下编写漏洞检测的相关逻辑</p>
+
+```python
+def run(url,ua):
+  ret = msg()
+  headers = {
+      'User-Agent': ua,
+      }
+  target = ''
+  url1 = url + target
+  ret['url'] = url1
+  try:
+    res=requests.get(url=url1,headers=headers,timeout=5,verify=False)
+    if res.status_code == 200 and re.search(r'root:.*?:[0-9]*:[0-9]*:',res.text,re.S):
+      ret['huixian'] = res.text
+      res.close()
+      ret['ifbug'] = True
+      return ret
+    else:
+      return ret
+  except:
+    return ret
+```
 一般在弱口令poc中要获取location,
 if res.status_code == 302 and '/out/out.ViewFolder.php' in res.headers['location']
 需要指定allow_redirects=False，如下
