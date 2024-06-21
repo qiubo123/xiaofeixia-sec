@@ -1,17 +1,16 @@
-
+<h1>使用注意点</h1>
+<h2>强调</h2>
+该脚本仅限学习交流使用，任何违法犯罪行为与脚本作者无关。
+<h2>使用注意点</h2>
+<ol>
+<li>只要不删除、增加、修改poc的文件名，都不需要“-up”。</li>
+<li>增加、删除poc,或者修改poc的文件名，都需要执行“-up”</li>
+<li>可以在poc目录下移动poc至你认为合适的目录下，只要在移动后执行“-up”即可</li>
+<li>由于个人精力有限，现有poc未一一验证，存在误报或poc错误的情况；</li>
+</ol>
+<h2>用法</h2>
+<p>安装python模块</p>
 ```
-
-##
-请在存在授权且合法的情况下使用该脚本，仅限学习交流使用，作者不支持任何违法犯罪行为。
-
-使用注意点：
-1、只要不删除、增加、修改poc的文件名，都不需要“-up”。
-2、增加、删除poc,或者修改poc的文件名，都需要执行“-up”
-3、可以在poc目录下移动poc至你认为合适的目录下，只要在移动后执行“-up”即可
-4、由于个人精力有限，现有poc未一一验证，存在误报或poc错误的情况；
-##
-##
-安装python模块
 pip install -r requirements.txt
 或者指定源安装
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
@@ -22,6 +21,8 @@ python xiaofeixia-sec.py -u http://www.tesssst.com -a
 python xiaofeixia-sec.py -u http://www.tesssst.com -s 弱口令
 3、批量poc扫描(不支持同时匹配,目前只能匹配一个关键字，如：-s tomcat nginx是不支持的)
 python xiaofeixia-sec.py -f targets.txt -s tomcat
+
+```
 4、扫描到的漏洞会记录到log目录下的文件，按照日期命名;
 5、“-pl”列出当前所有的poc信息;
 6、“debug”只能输出部分语法错误，这部分以后改进;
@@ -29,10 +30,7 @@ python xiaofeixia-sec.py -f targets.txt -s tomcat
 8、需要配置邮箱和授权码，最好是qq邮箱，其他的没配置，发现漏洞后可以直接邮件通知，不需要一直盯着;
 9、邮件发送过快可能会被qq限制，导致收不到邮件;
 ##
-```
 
-
-```
 poc编写规范
 一般在弱口令poc中要获取location,
 if res.status_code == 302 and '/out/out.ViewFolder.php' in res.headers['location']
