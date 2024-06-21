@@ -54,32 +54,34 @@
 
 <h2>poc编写规范</h2>
 
-例：
+<h3>1、msg()函数</h3>
+<p>msg()函数下为记录poc的基本信息。在检测到漏洞后会返回部分信息。</p>
 
-```
+```python
 def msg():
   ret = {
 
-     'links'     :  '',
+      'links'     :  '',//编写poc的参考链接
 
-      'huixian'   :  '',
+      'huixian'   :  '',//为空即可，如有需要可在`run()`函数下添加返回信息
 
-      'method'    :   'get',
+      'method'    :   'get',//请求得格式：get、post
 
-      'bugname'   :   'HIKVISION 流媒体管理服务器 user.xml 账号密码泄漏',
+      'bugname'   :   'HIKVISION 流媒体管理服务器 user.xml 账号密码泄漏',//漏洞名
 
-      'level'     :   'critical',
+      'level'     :   'critical',//漏洞等级：critical、high、medium、low
 
-      'FOFA'      :   '"杭州海康威视系统技术有限公司 版权所有" && title="流媒体管理服务器"',
+      'FOFA'      :   '"杭州海康威视系统技术有限公司 版权所有" && title="流媒体管理服务器"',//fofa查询语法
 
-      'author'    :   'ppxfx',
+      'author'    :   'ppxfx',//脚本作者
 
-      'ifbug'     :   False,
+      'ifbug'     :   False,//默认无漏洞，匹配到漏洞后将True赋值给ifbug
 
-      'create_time':  '2024/2/26',
-  	}
- 	return ret
+      'create_time':  '2024/2/26',//poc创建时间
+  }
+  return ret
 ```
+
 一般在弱口令poc中要获取location,
 if res.status_code == 302 and '/out/out.ViewFolder.php' in res.headers['location']
 需要指定allow_redirects=False，如下
