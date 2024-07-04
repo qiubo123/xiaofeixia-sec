@@ -198,7 +198,63 @@ def run():
   <li>有漏洞编号的最好带上</li>
   <li>支持中文,能唯一标志漏洞的，或者能被批量检索到的最好都写在poc文件名上，漏洞检索功能就是检索`漏洞名`</li>
 </ol>
-<h3>七、其他注意点</h3>
+<h3>七、常用正则匹配及常用函数</h3>
+<p>1、常用正则匹配</p>
+
+```
+匹配/etc/passwd文件
+r'root:.*?:[0-9]*:[0-9]*:'
+
+匹配win.ini文件
+r'for 16-bit app support'
+
+匹配linux中id命令的结果，有些设备中执行id命令肯能没有groups，可将groups及后面去掉。
+r'uid.*?gid.*?groups.*?'
+
+```
+<p>2、常用函数</p>
+
+```python
+def randomLowercase(n):#返回特定长度的随机小写字母
+  import random
+  import string
+  lst = []
+  for j in range(n):
+    lst.append(random.choice(string.ascii_lowercase))
+  lowercase = ''.join(lst)
+  return lowercase
+def randomInt(n,m):#返回某个范围中的int
+  import random
+  return random.randint(n,m)
+def hashmd5(s):#返回字符串的哈希值
+  import hashlib
+  md5 = hashlib.md5()
+  md5.update(str(s).encode('utf-8'))
+  str_md5 = md5.hexdigest()
+  return str_md5[0:15]
+#hashmd5(123456)
+def substr(s,n,m):#返回字符串s的切片截取
+  return s[n:m]
+
+def base64Str(n):#对字符串做base64编码
+  import base64
+  base64str = str(base64.b64encode(n.encode('utf-8'))).lstrip("b'").rstrip("'")
+  return base64str
+#base64Str('admin')
+```
+<p>3、获取匹配到的值</p>
+
+```python
+import re
+text = '''
+"code":1,
+"data":ico_afaefoijoaeif.jsp
+ '''
+res = re.search(r'code.*?data.*?:(?P<filename>.*?).jsp',text,re.S)
+print(res.group('filename'))
+#输出ico_afaefoijoaeif
+```
+<h3>八、其他注意点</h3>
 <p>小飞侠脚本由于是python，语法简单，自由发挥的空间比较多，可根据具体漏洞或自身编程习惯进行编写。</br>相同类型的漏洞放在一个路径下的好处是可以借鉴参考，有助于快速poc的编写</p>
 <h2>其他</h2>
 <p><strong>如有问题或其他功能扩充想法请与小飞侠联系，支持请点个star</strong></p>
