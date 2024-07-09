@@ -33,7 +33,7 @@ def randomLowercase(n):#返回特定长度的随机小写字母
   return lowercase
 def run(url,ua):
   # r0 = randomLowercase(6)
-  r0 = randomLowercase(10)
+  r1 = randomLowercase(10)
   ret = msg()
   headers = {
       'User-Agent': ua,
