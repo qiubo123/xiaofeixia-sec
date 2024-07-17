@@ -6,13 +6,13 @@ import re
 def msg():
   ret = {
 
-      'links'     :  'https://mp.weixin.qq.com/s/e6orCd9w79Vt6iodWVAN4Q',
+      'links'     :  'https://mp.weixin.qq.com/s/yJRAdBtfz_au2kRrBHU3hQ',
 
       'huixian'   :  '',
 
       'method'    :   'get',
 
-      'bugname'   :   '真内控国产化开发平台preview接口任意文件读取',
+      'bugname'   :   '真内控国产化开发平台 preview 任意文件读取',
 
       'level'     :   'medium',
 
@@ -22,7 +22,7 @@ def msg():
 
       'ifbug'     :   False,
 
-      'create_time':  '2024/6/25',
+      'create_time':  '2024/7/17',
   }
   return ret
 def run(url,ua):
