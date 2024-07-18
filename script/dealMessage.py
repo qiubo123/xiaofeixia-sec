@@ -29,7 +29,7 @@ def main(res):
 		recordlog.log(log_msg)
 
 		content = """
-###############皮皮虾-sec发现漏洞###############
+###############xiaofeixia-sec发现漏洞###############
 
 漏洞名称：{bugname}
 
