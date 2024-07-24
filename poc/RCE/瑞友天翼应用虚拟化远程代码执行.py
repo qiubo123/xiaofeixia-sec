@@ -2,8 +2,6 @@
 import requests
 import requests.packages.urllib3
 requests.packages.urllib3.disable_warnings()
-from colorama import init,Fore
-init(autoreset=True)
 def msg():
   ret = {}
   ret['links'] = ''
